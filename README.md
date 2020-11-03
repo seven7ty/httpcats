@@ -22,7 +22,7 @@ my_cat = cat_by_name("Success")
 
 print(f"My cat has a code of {my_cat.code} and means {my_cat.name}! The URL is {my_cat.url}")
 # Prints - 
-# My cat has a code of 200 and means Success! The URL is https://http.cat/200
+# My cat has a code of 200 and means Success! The URL is https://http.cat/404
 ```
 
 `cat_by_code(code: int)` is extremely similar to `cat_by_name`, just using a status code value.
