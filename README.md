@@ -44,7 +44,7 @@ This package is opensource so anyone with adequate python experience can contrib
 If you find any error/bug/mistake with the package or in the code feel free to create an issue and report it [here.](https://github.com/itsmewulf/httpcats/issues)
 
 ### Fix/Edit Content
-If you want to contribute to this package, fork the repository, clone it, make your changes and then simply fork the repo, make changes and create a Pull Request!
+If you want to contribute to this package, fork the repository, make your changes and then simply create a Pull Request!
 
 ### Contact
 If you want to contact me -<br>
