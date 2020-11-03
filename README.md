@@ -1,5 +1,5 @@
 # httpcats
-Get URLs to your favourite HTTP Cats made easy!
+Getting URLs to your favourite HTTP Cats made easy!
 
 
 ### Installation
@@ -49,6 +49,6 @@ If you find any error/bug/mistake with the package or in the code feel free to c
 If you want to contribute to this package, fork the repository, clone it, make your changes and then simply fork the repo, make changes and create a Pull Request!
 
 ### Contact
-If you want to contact me -
-**Mail -** ```wulf.developer@gmail.com```
+If you want to contact me -<br>
+**Mail -** ```wulf.developer@gmail.com```<br>
 **Discord -** ```wulf#9716```
