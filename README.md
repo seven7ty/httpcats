@@ -1,4 +1,6 @@
 # httpcats [![Badge](https://img.shields.io/pypi/v/httpcats?color=3776AB&logo=python&style=for-the-badge)](https://pypi.org/project/httpcats/)
+Getting URLs to your favourite HTTP Cats made easy!
+
 
 ### Installation
 
@@ -35,6 +37,26 @@ print(f"My cat has a code of {my_cat.code} and means {my_cat.name} :( The URL is
 # Prints - 
 # My cat has a code of 404 and means Not Found :( The URL is https://http.cat/404
 ```
+
+##### The HTTPCat object also has an `image` attribute
+
+You can use this attribute to get the image bytes associated with the cat.
+You can then save it or view it, like in the example below -
+
+```
+from httpcats import cat_by_code
+from PIL import Image
+from io import BytesIO
+
+my_cat = cat_by_code(302)
+
+cat_image = Image.open(BytesIO(my_cat.image))
+cat_image.show()
+
+# Output below -
+```
+
+<img src="https://http.cat/302" alt="Cat" width="300"/>
 
 ### Contributing 
 
