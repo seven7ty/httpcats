@@ -1,4 +1,4 @@
-# httpcats [![Badge](https://img.shields.io/pypi/v/httpcats?color=3776AB&logo=python&style=for-the-badge)](https://pypi.org/project/httpcats/)
+# httpcats [![Badge](https://img.shields.io/pypi/v/httpcats?color=3776AB&logo=python&style=for-the-badge)](https://pypi.org/project/httpcats/) [![Badge 2](https://img.shields.io/pypi/dm/httpcats?color=3776AB&logo=python&style=for-the-badge)](https://pypi.org/project/httpcats/)
 Getting URLs to your favourite HTTP Cats made easy!
 
 
