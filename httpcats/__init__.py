@@ -24,7 +24,8 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
-from enum import Enum, unique
+from enum import Enum
+from requests import get
 
 BASE_URL: str = "https://http.cat/"
 
@@ -98,12 +99,25 @@ class StatusCode(Enum):
 
 
 class HTTPCat:
-    """:class:`object` representing an HTTP Cat"""
+    """:class:`object` representing an HTTP Cat
 
-    def __init__(self, code: int, name: str, url: str):
+    Attributes
+    ------------
+    code: :class:`int`
+        Status Code associated with this :class:`HTTPCat`
+    name: :class:`str`
+        Status Code Name associated with this :class:`HTTPCat`
+    url: :class:`str`
+        The URL associated with this :class:`HTTPCat`
+    image: :class:`bytes`
+        The image bytes associated with this :class:`HTTPCat`
+    """
+
+    def __init__(self, code: int, name: str, url: str, image: bytes):
         self.code: int = code
         self.name: str = name
         self.url: str = url
+        self.image: bytes = image
 
     def __int__(self) -> int:
         return self.code
@@ -111,15 +125,40 @@ class HTTPCat:
     def __str__(self) -> str:
         return self.name
 
+    def __bytes__(self) -> bytes:
+        return self.image
+
 
 def _make_valid_name(name: str) -> str:
-    """Make a normal string into one that can be used to get an Enum"""
+    """Make a normal string into one that can be used to get an Enum
+
+    Parameters
+    -----------
+    name: [:class:`str`]
+        The status code name to make a valid :class:`StatusCode`
+
+    Returns
+    ---------
+    :class:`str`
+        The name that can be used to get a :class:`StatusCode`
+    """
 
     return name.replace(" ", "_").upper()
 
 
 def _pretty(name: str) -> str:
-    """Make :class:`StatusCode` name pretty again"""
+    """Make :class:`StatusCode` name pretty again
+
+    Parameters
+    -----------
+    name: [:class:`str`]
+        The status code name to make pretty
+
+    Returns
+    ---------
+    :class:`str`
+        The pretty name for the status code name given
+    """
 
     return name.replace("_", " ").lower().title()
 
@@ -130,18 +169,18 @@ def cat_by_code(code: int) -> HTTPCat:
     Parameters
     -----------
     code: [:class:`int`]
-    The status code to search for.
+        The status code to search for.
 
     Returns
     ---------
     :class:`HTTPCat`
-        The HTTPCat object containing a name, code and url.
+        The HTTPCat object containing a name, code, URL and image bytes for the cat.
     """
 
     try:
         cat_enum: Enum = StatusCode(code)
         url: str = BASE_URL + str(cat_enum.value)
-        return HTTPCat(int(code), _pretty(cat_enum.name), url)
+        return HTTPCat(int(code), _pretty(cat_enum.name), url, get(url).content)
     except ValueError:  # Couldn't get the status code
         raise InvalidCat(f"{code} is not a valid status code")
 
@@ -152,18 +191,18 @@ def cat_by_name(name: str) -> HTTPCat:
     Parameters
     -----------
     name: [:class:`str`]
-    The status code name to search for.
+        The status code name to search for.
 
     Returns
     ---------
     :class:`HTTPCat`
-        The HTTPCat object containing a name, code and url.
+        The HTTPCat object containing a name, code, URL and image bytes for the cat.
     """
 
     try:
         name: str = _make_valid_name(name)
         cat_enum: Enum = StatusCode[name]
         url: str = BASE_URL + str(cat_enum.value)
-        return HTTPCat(cat_enum.value, _pretty(cat_enum.name), url)
+        return HTTPCat(cat_enum.value, _pretty(cat_enum.name), url, get(url).content)
     except ValueError:  # Couldn't get the status code name
         raise InvalidCat(f"{name} is not a valid status code name")
