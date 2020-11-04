@@ -26,7 +26,7 @@ print(f"My cat has a code of {my_cat.code} and means {my_cat.name}! The URL is {
 ```
 
 `cat_by_code(code: int)` is extremely similar to `cat_by_name`, just using a status code value.
-Upon finding a cat matching the name, it returns an `HTTPCat` object. Here's an example -
+Upon finding a cat matching the code, it returns an `HTTPCat` object. Here's an example -
 
 ```
 from httpcats import cat_by_code
