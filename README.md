@@ -15,7 +15,7 @@ Currently, you can get your cats using one of two functions - `cat_by_name` and 
 `cat_by_name(name: str)` takes in a sole parameter - `name`, which is the status code name to get a cat for.
 Upon finding a cat matching the name, it returns an `HTTPCat` object. Here's an example -
 
-```
+```py
 from httpcats import cat_by_name
 
 my_cat = cat_by_name("Success")
@@ -28,7 +28,7 @@ print(f"My cat has a code of {my_cat.code} and means {my_cat.name}! The URL is {
 `cat_by_code(code: int)` is extremely similar to `cat_by_name`, just using a status code value.
 Upon finding a cat matching the code, it returns an `HTTPCat` object. Here's an example -
 
-```
+```py
 from httpcats import cat_by_code
 
 my_cat = cat_by_code(404)
@@ -43,7 +43,7 @@ print(f"My cat has a code of {my_cat.code} and means {my_cat.name} :( The URL is
 You can use this attribute to get the image bytes associated with the cat.
 You can then save it or view it, like in the example below -
 
-```
+```py
 from httpcats import cat_by_code
 from PIL import Image
 from io import BytesIO
